@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeurIPS 2025 | Research Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'zen-cream': '#F0EEE6',
+                        'zen-ink': '#333333',
+                        'zen-accent': '#535146', // subtle earthy tone
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F0EEE6;
+            color: #333333;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* The Canvas Background */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Subtle fade at the bottom */
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        /* Minimalist Cards - Less blur, more stroke */
+        .minimal-panel {
+            background: rgba(240, 238, 230, 0.6); /* Matching cream with slight transparency */
+            border: 1px solid rgba(51, 51, 51, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom selection styles */
+        ::selection {
+            background: #333333;
+            color: #F0EEE6;
+        }
+
+        .slot-btn {
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .slot-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #333333;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+        .slot-btn:hover:not(:disabled)::after {
+            width: 100%;
+        }
+        .slot-btn:hover:not(:disabled) {
+            color: #F0EEE6;
+            border-color: #333333;
+        }
+        
+        .slot-btn.selected {
+            background-color: #333333;
+            color: #F0EEE6;
+            border-color: #333333;
+        }
+
+        /* Hide Scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Links underline animation */
+        .hover-underline {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #333333;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 md:p-12">
+
+    <!-- Interactive Background -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-6xl relative z-10 fade-in-up" style="animation-delay: 0.2s;">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+            
+            <!-- LEFT COLUMN: Intro -->
+            <div class="lg:col-span-5 flex flex-col justify-center space-y-10">
+                
+                <!-- Header -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="h-px w-8 bg-zen-ink opacity-30"></div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zen-ink opacity-60">NeurIPS 2025</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl md:text-6xl text-zen-ink leading-[1.1]">
+                        Science&Robotics <br> <i class="opacity-80"> Let us Connect.</i>
+                    </h1>
+                </div>
+
+                <!-- Bio -->
+                <div class="space-y-6 text-zen-ink opacity-80 max-w-md font-light text-lg leading-relaxed">
+                    <p>
+                        I'm <strong>Lorenzo Magnino</strong>, a researcher at the University of Cambridge - ProrokLab.
+                    </p>
+                    <p>
+                        My work now explores the intersection of Multi-Agent Robotics and Collective Intelligence. I am currently open for coffee chats and collaboration discussions.
+                    </p>
+                    <p class="text-base italic opacity-70">
+                        Feel free to write me on LinkedIn or connect directly by email.
+                    </p>
+                </div>
+
+                <!-- Contact Links -->
+                <div class="pt-4 flex flex-col space-y-3">
+                    <a href="mailto:lm2183@cam.ac.uk" class="flex items-center space-x-3 group w-fit">
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">lm2183@cam.ac.uk</span>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/lorenzo-magnino/" target="_blank" class="flex items-center space-x-3 group w-fit">
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">LinkedIn Profile</span>
+                    </a>
+                    
+                    <a href="https://github.com/lorenzomagnino" target="_blank" class="flex items-center space-x-3 group w-fit">
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">GitHub Profile</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Scheduler -->
+            <div class="lg:col-span-7 mt-12 lg:mt-16">
+                <div class="minimal-panel p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden">
+                    
+                    <!-- Subtle pattern decoration in corner -->
+                    <div class="absolute top-0 right-0 w-32 h-32 border-l border-b border-zen-ink/5 opacity-50"></div>
+
+                    <div>
+                        <h2 class="font-serif text-3xl text-zen-ink mb-8">Propose a Follow-up Meeting in San Diego (NeurIPS 2025)</h2>
+
+                        <!-- Date Tabs -->
+                        <div class="flex space-x-4 mb-8 border-b border-zen-ink/10 pb-4 overflow-x-auto no-scrollbar" id="date-tabs">
+                            <button class="date-tab pb-2 border-b-2 border-zen-ink font-medium text-zen-ink whitespace-nowrap" data-date="dec3">Dec 3rd</button>
+                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec4">Dec 4th</button>
+                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec5">Dec 5th</button>
+                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec6">Dec 6th</button>
+                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec7">Dec 7th</button>
+                        </div>
+
+                        <!-- Time Slots Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-10" id="time-slots">
+                            <!-- JS will populate this -->
+                        </div>
+                    </div>
+
+                    <!-- Simple Form -->
+                    <form id="booking-form" class="space-y-6 opacity-30 pointer-events-none transition-all duration-500 blur-[2px]">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Name</label>
+                                <input type="text" id="name-input" name="name" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Enter your name" required>
+                            </div>
+                            <div class="group">
+                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Email</label>
+                                <input type="email" id="email-input" name="email" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Institute</label>
+                                <input type="text" id="institute-input" name="institute" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Your affiliation">
+                            </div>
+                            <div class="group">
+                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Selected Time</label>
+                                <input type="text" id="time-input" name="time" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Select a time slot" readonly>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Follow-up Message</label>
+                            <textarea id="message-input" name="message" rows="4" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic resize-none" placeholder="Tell me about your research interests or what you'd like to discuss..." required></textarea>
+                        </div>
+                        
+                        <div class="flex justify-end pt-4">
+                            <button type="submit" class="bg-zen-ink text-zen-cream px-8 py-3 rounded-full hover:bg-zen-accent transition-all duration-300 shadow-lg shadow-black/5 flex items-center space-x-2">
+                                <span class="text-sm font-medium tracking-wide">Send Request</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-6 left-0 w-full text-center pointer-events-none fade-in-up" style="animation-delay: 0.5s;">
+        <p class="text-[10px] font-mono uppercase tracking-widest text-zen-ink/30">Cambrigde, UK • 2025</p>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#F0EEE6]/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-zen-ink text-zen-cream rounded-2xl p-10 max-w-sm w-full mx-6 shadow-2xl transform scale-95 transition-transform duration-500 border border-zen-ink" id="modal-content">
+            <h3 class="font-serif text-2xl italic mb-4">Request Received</h3>
+            <p class="font-light text-zen-cream/80 mb-8 leading-relaxed">Thank you. I have received your request and will follow up shortly via email to coordinate details.</p>
+            <button onclick="closeModal()" class="w-full py-3 rounded-full border border-zen-cream/20 hover:bg-zen-cream hover:text-zen-ink transition-colors font-mono text-xs uppercase tracking-widest">Return</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. MINIMALIST WIREFRAME ANIMATION ---
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        // Config for the "Way of Code" aesthetic
+        const particleCount = 45; 
+        const connectionDistance = 200; 
+        const mouseDistance = 250; 
+        
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.3; // Very slow, contemplative movement
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 1.5 + 0.5; // Tiny dots
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+                        const direction = 0.015; 
+                        this.vx += forceDirectionX * force * direction;
+                        this.vy += forceDirectionY * force * direction;
+                    }
+                }
+            }
+
+            draw() {
+                // No fill, just subtle dots
+                ctx.fillStyle = 'rgba(51, 51, 51, 0.4)'; // #333333
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx*dx + dy*dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        const opacity = 1 - (distance / connectionDistance);
+                        // Very thin, dark grey lines for wireframe look
+                        ctx.strokeStyle = `rgba(51, 51, 51, ${opacity * 0.12})`; 
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+
+        // --- 2. SCHEDULER LOGIC ---
+        const slotsContainer = document.getElementById('time-slots');
+        const bookingForm = document.getElementById('booking-form');
+        const dateTabs = document.querySelectorAll('.date-tab');
+        // A mix of times for realism
+        const times = ['09:00', '10:30', '11:00', '13:00', '14:30', '16:00', '17:00', '17:30', '18:00', '18:30', '19:00'];
+        
+        let selectedBtn = null;
+        let currentDate = 'dec3';
+
+        // Date tab switching functionality
+        dateTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab styling
+                dateTabs.forEach(t => {
+                    t.classList.remove('border-zen-ink', 'font-medium', 'text-zen-ink');
+                    t.classList.add('border-transparent', 'text-zen-ink/40');
+                });
+                tab.classList.remove('border-transparent', 'text-zen-ink/40');
+                tab.classList.add('border-zen-ink', 'font-medium', 'text-zen-ink');
+                
+                // Update current date
+                currentDate = tab.getAttribute('data-date');
+                
+                // Clear selected time slot and reset form
+                if (selectedBtn) {
+                    selectedBtn.classList.remove('selected');
+                    selectedBtn = null;
+                }
+                timeInput.value = '';
+                bookingForm.classList.add('opacity-30', 'pointer-events-none', 'blur-[2px]');
+            });
+        });
+
+        const timeInput = document.getElementById('time-input');
+        
+        times.forEach(time => {
+            const btn = document.createElement('button');
+            // Clean, mono-spaced time slots
+            btn.className = 'slot-btn border border-zen-ink/20 rounded-lg py-3 text-sm font-mono text-zen-ink/70 bg-transparent hover:border-zen-ink focus:outline-none';
+            btn.innerText = time;
+            btn.setAttribute('data-time', time);
+            
+            btn.addEventListener('click', () => {
+                if (selectedBtn) {
+                    selectedBtn.classList.remove('selected');
+                }
+                
+                btn.classList.add('selected');
+                selectedBtn = btn;
+                
+                // Update time input with selected date and time
+                const dateLabels = {
+                    'dec3': 'Dec 3rd',
+                    'dec4': 'Dec 4th',
+                    'dec5': 'Dec 5th',
+                    'dec6': 'Dec 6th',
+                    'dec7': 'Dec 7th'
+                };
+                timeInput.value = `${dateLabels[currentDate]} at ${time}`;
+                
+                // Unlock form with blur removal
+                bookingForm.classList.remove('opacity-30', 'pointer-events-none', 'blur-[2px]');
+            });
+
+            slotsContainer.appendChild(btn);
+        });
+
+        // --- 3. FORM SUBMISSION ---
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name-input').value;
+            const email = document.getElementById('email-input').value;
+            const institute = document.getElementById('institute-input').value;
+            const time = document.getElementById('time-input').value;
+            const message = document.getElementById('message-input').value;
+            
+            // Create email subject and body
+            const subject = encodeURIComponent(`Meeting Request: ${name}`);
+            let body = encodeURIComponent(`Hello Lorenzo,\n\n`);
+            body += encodeURIComponent(`I would like to schedule a follow-up meeting.\n\n`);
+            body += encodeURIComponent(`Name: ${name}\n`);
+            body += encodeURIComponent(`Email: ${email}\n`);
+            if (institute) {
+                body += encodeURIComponent(`Institute: ${institute}\n`);
+            }
+            body += encodeURIComponent(`Preferred Time: ${time}\n\n`);
+            body += encodeURIComponent(`Message:\n${message}\n\n`);
+            body += encodeURIComponent(`Best regards,\n${name}`);
+            
+            // Open email client with mailto link
+            window.location.href = `mailto:lm2183@cam.ac.uk?subject=${subject}&body=${body}`;
+            
+            // Show success modal
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            bookingForm.reset();
+            bookingForm.classList.add('opacity-30', 'pointer-events-none', 'blur-[2px]');
+            if(selectedBtn) {
+                selectedBtn.classList.remove('selected');
+                selectedBtn = null;
+            }
+        }
+    </script>
+</body>
+</html>
