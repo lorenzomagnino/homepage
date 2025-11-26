@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 1200px;
+            height: 630px;
+            background-color: #F0EEE6;
+            color: #333333;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .line {
+            width: 32px;
+            height: 1px;
+            background-color: #333333;
+            opacity: 0.3;
+        }
+        
+        .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #333333;
+            opacity: 0.6;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        
+        .logo-column {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 16px;
+        }
+        
+        .text-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.1;
+            color: #333333;
+            margin-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 48px;
+            font-style: italic;
+            color: #333333;
+            opacity: 0.8;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            opacity: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header-line">
+        <div class="line"></div>
+        <span class="label">NeurIPS 2025</span>
+    </div>
+    
+    <div class="content-wrapper">
+        <div class="logo-column">
+            <img src="icon_1.png" alt="Cambridge" class="logo" onerror="this.style.display='none'">
+        </div>
+        <div class="text-column">
+            <h1>Lorenzo Magnino</h1>
+            <div class="subtitle">Let's Connect.</div>
+        </div>
+    </div>
+</body>
+</html>
+
