@@ -6,6 +6,7 @@
     <title>NeurIPS 2025 | Research Connect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.47.4/dist/umd/supabase.min.js" integrity="sha384-nk68xuHP1mzMBNtKLHUKbvvB0Xo+ft1b5rEzlFxK+wIwN8KgBiJDWACty3V3lrED" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -199,65 +200,67 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: Scheduler -->
+            <!-- RIGHT COLUMN: Photos & Meeting Form -->
             <div class="lg:col-span-7 mt-12 lg:mt-16">
-                <div class="minimal-panel p-8 md:p-12 h-full flex flex-col justify-between relative overflow-hidden">
+                <div class="minimal-panel p-8 md:p-12 h-full flex flex-col gap-10 relative overflow-hidden">
                     
                     <!-- Subtle pattern decoration in corner -->
                     <div class="absolute top-0 right-0 w-32 h-32 border-l border-b border-zen-ink/5 opacity-50"></div>
 
-                    <div>
-                        <h2 class="font-serif text-3xl text-zen-ink mb-8">Propose a Follow-up Meeting in San Diego (NeurIPS 2025)</h2>
-
-                        <!-- Date Tabs -->
-                        <div class="flex space-x-4 mb-8 border-b border-zen-ink/10 pb-4 overflow-x-auto no-scrollbar" id="date-tabs">
-                            <button class="date-tab pb-2 border-b-2 border-zen-ink font-medium text-zen-ink whitespace-nowrap" data-date="dec3">Dec 3rd</button>
-                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec4">Dec 4th</button>
-                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec5">Dec 5th</button>
-                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec6">Dec 6th</button>
-                            <button class="date-tab pb-2 border-b-2 border-transparent text-zen-ink/40 hover:text-zen-ink transition-colors whitespace-nowrap" data-date="dec7">Dec 7th</button>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <img src="cover2.jpg" alt="Brainstorming in Cambridge" class="w-full h-64 object-cover rounded-xl border border-zen-ink/10 shadow-sm">
+                            <img src="cover1.jpg" alt="Collaborative session" class="w-full h-64 object-cover rounded-xl border border-zen-ink/10 shadow-sm">
                         </div>
-
-                        <!-- Time Slots Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-10" id="time-slots">
-                            <!-- JS will populate this -->
-                        </div>
+                        <p class="text-sm text-zen-ink/70">Snapshots from recent Symposium on robotics in Cambridge. Let’s continue the conversation in San Diego.</p>
                     </div>
 
-                    <!-- Simple Form -->
-                    <form id="booking-form" class="space-y-6 opacity-30 pointer-events-none transition-all duration-500 blur-[2px]">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="group">
-                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Name</label>
-                                <input type="text" id="name-input" name="name" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Enter your name" required>
+                    <div class="space-y-6">
+                        <h2 class="font-serif text-3xl text-zen-ink">Plan a Meeting in San Diego</h2>
+
+                        <form id="booking-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Name</label>
+                                    <input type="text" id="name-input" name="name" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Enter your name" required>
+                                </div>
+                                <div class="group">
+                                    <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Institute</label>
+                                    <input type="text" id="institute-input" name="institute" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Your affiliation">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Preferred Date in San Diego</label>
+                                    <div class="border-b border-zen-ink/20 pb-2">
+                                        <select id="date-select" name="preferred-date" class="w-full bg-transparent text-zen-ink focus:outline-none font-serif italic">
+                                            <option value="Dec 3rd">Dec 3rd</option>
+                                            <option value="Dec 4th">Dec 4th</option>
+                                            <option value="Dec 5th">Dec 5th</option>
+                                            <option value="Dec 6th">Dec 6th</option>
+                                            <option value="Dec 7th">Dec 7th</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Preferred Time</label>
+                                    <input type="text" id="time-input" name="time" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="e.g. 16:00 or evening" required>
+                                </div>
                             </div>
                             <div class="group">
-                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Email</label>
-                                <input type="email" id="email-input" name="email" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="your.email@example.com" required>
+                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Follow-up Message</label>
+                                <textarea id="message-input" name="message" rows="4" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic resize-none" placeholder="Tell me about your research interests or what you'd like to discuss..." required></textarea>
                             </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="group">
-                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Institute</label>
-                                <input type="text" id="institute-input" name="institute" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Your affiliation">
+                            
+                            <div class="flex justify-end pt-4">
+                                <button type="submit" class="bg-zen-ink text-zen-cream px-8 py-3 rounded-full hover:bg-zen-accent transition-all duration-300 shadow-lg shadow-black/5 flex items-center space-x-2">
+                                    <span class="text-sm font-medium tracking-wide">Send Request</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </button>
                             </div>
-                            <div class="group">
-                                <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Selected Time</label>
-                                <input type="text" id="time-input" name="time" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic" placeholder="Select a time slot" readonly>
-                            </div>
-                        </div>
-                        <div class="group">
-                            <label class="block text-xs font-mono uppercase tracking-widest text-zen-ink/50 mb-2 group-focus-within:text-zen-ink transition-colors">Follow-up Message</label>
-                            <textarea id="message-input" name="message" rows="4" class="w-full bg-transparent border-b border-zen-ink/20 py-2 text-zen-ink focus:outline-none focus:border-zen-ink transition-colors placeholder-zen-ink/20 font-serif italic resize-none" placeholder="Tell me about your research interests or what you'd like to discuss..." required></textarea>
-                        </div>
-                        
-                        <div class="flex justify-end pt-4">
-                            <button type="submit" class="bg-zen-ink text-zen-cream px-8 py-3 rounded-full hover:bg-zen-accent transition-all duration-300 shadow-lg shadow-black/5 flex items-center space-x-2">
-                                <span class="text-sm font-medium tracking-wide">Send Request</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                            </button>
-                        </div>
-                    </form>
+                            <p id="form-status" class="text-xs font-mono uppercase tracking-widest mt-2 text-zen-ink/60 hidden"></p>
+                        </form>
+                    </div>
 
                 </div>
             </div>
@@ -380,108 +383,68 @@
         animate();
 
 
-        // --- 2. SCHEDULER LOGIC ---
-        const slotsContainer = document.getElementById('time-slots');
+        // --- 2. SUPABASE CLIENT ---
         const bookingForm = document.getElementById('booking-form');
-        const dateTabs = document.querySelectorAll('.date-tab');
-        // A mix of times for realism
-        const times = ['09:00', '10:30', '11:00', '13:00', '14:30', '16:00', '17:00', '17:30', '18:00', '18:30', '19:00'];
-        
-        let selectedBtn = null;
-        let currentDate = 'dec3';
+        const statusText = document.getElementById('form-status');
+        const supabaseUrl = 'https://xtxkpygwzeggzvmlheaj.supabase.co'; // TODO: replace with your Supabase project URL
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0eGtweWd3emVnZ3p2bWxoZWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQxNTEwNDgsImV4cCI6MjA3OTcyNzA0OH0.oV_I2L014w89_4uYK_aDsEcYtGhcyTbbxn1UwC1u01Q'; // TODO: replace with your Supabase anon key
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
-        // Date tab switching functionality
-        dateTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab styling
-                dateTabs.forEach(t => {
-                    t.classList.remove('border-zen-ink', 'font-medium', 'text-zen-ink');
-                    t.classList.add('border-transparent', 'text-zen-ink/40');
-                });
-                tab.classList.remove('border-transparent', 'text-zen-ink/40');
-                tab.classList.add('border-zen-ink', 'font-medium', 'text-zen-ink');
-                
-                // Update current date
-                currentDate = tab.getAttribute('data-date');
-                
-                // Clear selected time slot and reset form
-                if (selectedBtn) {
-                    selectedBtn.classList.remove('selected');
-                    selectedBtn = null;
-                }
-                timeInput.value = '';
-                bookingForm.classList.add('opacity-30', 'pointer-events-none', 'blur-[2px]');
-            });
-        });
-
-        const timeInput = document.getElementById('time-input');
-        
-        times.forEach(time => {
-            const btn = document.createElement('button');
-            // Clean, mono-spaced time slots
-            btn.className = 'slot-btn border border-zen-ink/20 rounded-lg py-3 text-sm font-mono text-zen-ink/70 bg-transparent hover:border-zen-ink focus:outline-none';
-            btn.innerText = time;
-            btn.setAttribute('data-time', time);
-            
-            btn.addEventListener('click', () => {
-                if (selectedBtn) {
-                    selectedBtn.classList.remove('selected');
-                }
-                
-                btn.classList.add('selected');
-                selectedBtn = btn;
-                
-                // Update time input with selected date and time
-                const dateLabels = {
-                    'dec3': 'Dec 3rd',
-                    'dec4': 'Dec 4th',
-                    'dec5': 'Dec 5th',
-                    'dec6': 'Dec 6th',
-                    'dec7': 'Dec 7th'
-                };
-                timeInput.value = `${dateLabels[currentDate]} at ${time}`;
-                
-                // Unlock form with blur removal
-                bookingForm.classList.remove('opacity-30', 'pointer-events-none', 'blur-[2px]');
-            });
-
-            slotsContainer.appendChild(btn);
-        });
+        function setStatus(message, tone = 'info') {
+            statusText.textContent = message;
+            statusText.classList.remove('hidden', 'text-emerald-600', 'text-red-500', 'text-zen-ink/60');
+            if (tone === 'success') {
+                statusText.classList.add('text-emerald-600');
+            } else if (tone === 'error') {
+                statusText.classList.add('text-red-500');
+            } else {
+                statusText.classList.add('text-zen-ink/60');
+            }
+        }
 
         // --- 3. FORM SUBMISSION ---
-        bookingForm.addEventListener('submit', (e) => {
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name-input').value;
-            const email = document.getElementById('email-input').value;
-            const institute = document.getElementById('institute-input').value;
-            const time = document.getElementById('time-input').value;
-            const message = document.getElementById('message-input').value;
-            
-            // Create email subject and body
-            const subject = encodeURIComponent(`Meeting Request: ${name}`);
-            let body = encodeURIComponent(`Hello Lorenzo,\n\n`);
-            body += encodeURIComponent(`I would like to schedule a follow-up meeting.\n\n`);
-            body += encodeURIComponent(`Name: ${name}\n`);
-            body += encodeURIComponent(`Email: ${email}\n`);
-            if (institute) {
-                body += encodeURIComponent(`Institute: ${institute}\n`);
+
+            if (supabaseUrl.includes('YOUR_PROJECT_REF') || supabaseAnonKey.includes('YOUR_SUPABASE_ANON_KEY')) {
+                setStatus('Configure Supabase credentials in neurips2025.html', 'error');
+                return;
             }
-            body += encodeURIComponent(`Preferred Time: ${time}\n\n`);
-            body += encodeURIComponent(`Message:\n${message}\n\n`);
-            body += encodeURIComponent(`Best regards,\n${name}`);
             
-            // Open email client with mailto link
-            window.location.href = `mailto:lm2183@cam.ac.uk?subject=${subject}&body=${body}`;
-            
-            // Show success modal
-            const modal = document.getElementById('success-modal');
-            const modalContent = document.getElementById('modal-content');
-            
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
+            const name = document.getElementById('name-input').value.trim();
+            const institute = document.getElementById('institute-input').value.trim();
+            const preferredDate = document.getElementById('date-select').value;
+            const time = document.getElementById('time-input').value.trim();
+            const message = document.getElementById('message-input').value.trim();
+
+            setStatus('Submitting request…');
+
+            try {
+                const { error } = await supabaseClient
+                    .from('meeting_requests')
+                    .insert([{
+                        name,
+                        institute,
+                        preferred_date: preferredDate,
+                        preferred_time: time,
+                        message
+                    }]);
+
+                if (error) {
+                    throw error;
+                }
+
+                setStatus('Request saved. Thank you!', 'success');
+
+                const modal = document.getElementById('success-modal');
+                const modalContent = document.getElementById('modal-content');
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            } catch (err) {
+                console.error(err);
+                setStatus('Something went wrong. Please try again.', 'error');
+            }
         });
 
         function closeModal() {
@@ -493,11 +456,7 @@
             modalContent.classList.add('scale-95');
             
             bookingForm.reset();
-            bookingForm.classList.add('opacity-30', 'pointer-events-none', 'blur-[2px]');
-            if(selectedBtn) {
-                selectedBtn.classList.remove('selected');
-                selectedBtn = null;
-            }
+            statusText.classList.add('hidden');
         }
     </script>
 </body>

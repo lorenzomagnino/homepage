@@ -47,20 +47,6 @@ A minimalist website for scheduling follow-up meetings during NeurIPS 2025 in Sa
 
 4. **Enable GitHub Pages** (same as Option 1, step 3)
 
-## Alternative Hosting Options
-
-### Netlify (Free)
-1. Go to [netlify.com](https://netlify.com)
-2. Sign up/login
-3. Drag and drop your `index.html` file
-4. Your site is instantly live!
-
-### Vercel (Free)
-1. Go to [vercel.com](https://vercel.com)
-2. Sign up/login
-3. Import your repository or upload files
-4. Deploy!
-
 ## Your Site URL
 
 Once deployed, your site will be accessible at:
