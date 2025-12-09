@@ -1,9 +1,9 @@
-# NeurIPS 2025 Connection Website
+# Homepage
 
-A minimalist website for scheduling follow-up meetings during NeurIPS 2025 in San Diego.
+A minimalist website to share my works and curiosities.
 
 ## Site URL
 
 Accessible at:
-- GitHub Pages: [https://lorenzomagnino.github.io/Connection-website/]
+- GitHub Pages: [https://lorenzomagnino.github.io/homepage/]
 
