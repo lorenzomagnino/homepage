@@ -48,6 +48,10 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             background-color: #F0EEE6;
             color: #333333;
@@ -209,10 +213,20 @@
                     <h1 class="font-serif text-5xl md:text-6xl text-zen-ink leading-[1.1]">
                         Lorenzo Magnino
                     </h1>
+                    
+                    <!-- Navigation Buttons -->
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <a href="#publications" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                            Publications
+                        </a>
+                        <a href="#news" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                            News
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Bio -->
-                <div class="space-y-6 text-zen-ink max-w-md font-light text-lg leading-relaxed">
+                <div class="space-y-6 text-zen-ink max-w-md font-light text-base leading-relaxed">
                     <p>
                         I'm <strong>Lorenzo Magnino,</strong> a researcher at <strong>University of Cambridge</strong>, supervised by <a href="https://proroklab.org/team/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">Amanda Prorok</a>.
                     </p>
@@ -223,7 +237,7 @@
                         During my time at <a href="https://dail.shanghai.nyu.edu/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">NYUShanghai</a> I worked on Mean Field Games and Reinforcement Learning supervised by <a href="https://mlauriere.github.io/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">Mathieu Lauriere</a>.
                     </p>
                     
-                    <p class="text-base italic text-zen-ink">
+                    <p class="text-sm italic text-zen-ink">
                         Feel free to write me on LinkedIn or connect directly by email.
                     </p>
                 </div>
@@ -232,26 +246,26 @@
                 <div class="pt-1 flex flex-col space-y-1">
                     <div class="flex flex-col lg:flex-row lg:items-start lg:gap-6">
                         <div class="flex flex-col space-y-1 flex-1">
-                            <a href="mailto:lm2183@cam.ac.uk" class="flex items-center space-x-3 group w-fit">
-                                <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <span class="hover-underline font-mono text-sm">lm2183@cam.ac.uk</span>
-                            </a>
-                            
+                    <a href="mailto:lm2183@cam.ac.uk" class="flex items-center space-x-3 group w-fit">
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">lm2183@cam.ac.uk</span>
+                    </a>
+                    
                             <a href="https://www.linkedin.com/in/lorenzo-magnino/" target "_blank" class="flex items-center space-x-3 group w-fit">
-                                <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                </div>
-                                <span class="hover-underline font-mono text-sm">LinkedIn Profile</span>
-                            </a>
-                            
-                            <a href="https://github.com/lorenzomagnino" target="_blank" class="flex items-center space-x-3 group w-fit">
-                                <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
-                                </div>
-                                <span class="hover-underline font-mono text-sm">GitHub Profile</span>
-                            </a>
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">LinkedIn Profile</span>
+                    </a>
+                    
+                    <a href="https://github.com/lorenzomagnino" target="_blank" class="flex items-center space-x-3 group w-fit">
+                        <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                        </div>
+                        <span class="hover-underline font-mono text-sm">GitHub Profile</span>
+                    </a>
                             
                             <a href="https://scholar.google.com/citations?user=V0Jerh0AAAAJ&hl=it" target="_blank" class="flex items-center space-x-3 group w-fit">
                                 <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
@@ -265,7 +279,7 @@
                                 <img src="IMG_7115.jpg" alt="Swarm trajectory visualization" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/40 via-transparent to-transparent pointer-events-none"></div>
                             </div>
-                        </div>
+                </div>
                     </div>
                 </div>
             </div>
@@ -286,19 +300,37 @@
                     </div>
 
                     <!-- News Section -->
-                    <div class="pt-8 space-y-4">
+                    <div id="news" class="pt-1 space-y-1 scroll-mt-20">
                         <h3 class="font-serif text-lg text-zen-ink opacity-90">News</h3>
                         <div class="p-w">
                             <ul class="space-y-2 list-disc list-inside">
                                 <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Dec 2</span> NeurIPS Poster!
+                                    <span class="font-bold">Dec 2025:</span> Poster presentation at <strong>NeurIPS 2025</strong> in San Diego
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Nov 2025:</span> Talk at <strong>Symposium "Future of Intelligent Robotics"</strong> in Cambridge
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Oct 2025:</span> Starting as a Research Assistant at the <strong>University of Cambridge</strong>, ProrokLab
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Jul 2025:</span> Poster presentation at <strong>ICML 2025</strong> in Vancouver
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Mar 2025:</span> Intern at <strong>InstaDeep</strong> (MARL and GNN for routing and scheduling in a real world challenge)
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Sep 2024:</span> Continue as Research Assistant at <strong>NYU Shanghai</strong> w. Mathieu Lauriere
+                                </li>
+                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                    <span class="font-bold">Mar 2024:</span> Head to <strong>NYU Shanghai</strong> as a visiting student
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- In the Meanwhile Section -->
-                    <div class="pt-8 space-y-4">
+                    <div class="pt-1 space-y-1">
                         <h3 class="font-serif text-lg text-zen-ink opacity-90">...some interesing readings</h3>
                         <div class="p-w">
                             <ul class="space-y-2 list-disc list-inside">
@@ -320,7 +352,7 @@
         </div>
 
         <!-- Featured Publications Section - Full Width -->
-        <div class="mt-16 space-y-6">
+        <div id="publications" class="mt-16 space-y-6 scroll-mt-20">
             <h2 class="font-serif text-3xl text-zen-ink">Featured Publications</h2>
             
             <div class="space-y-4">
@@ -333,7 +365,7 @@
                                 <img src="neurips25_cover.png" alt="Solving Continuous Mean Field Games" class="w-full h-auto object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
                             </div>
-                        </div>
+                                </div>
                         
                         <!-- Paper Details -->
                         <div class="flex-1 space-y-3">
@@ -347,7 +379,7 @@
                                 <p class="text-xs text-zen-ink/60 font-mono uppercase tracking-widest mt-2">
                                     NeurIPS 2025
                                 </p>
-                            </div>
+                                </div>
                             
                             <div class="flex flex-wrap gap-3 pt-2">
                                 <a href="https://arxiv.org/pdf/2510.22158" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
