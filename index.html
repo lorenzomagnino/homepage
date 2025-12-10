@@ -131,6 +131,20 @@
             color: #F0EEE6;
             border-color: #333333;
         }
+        
+        .topic-btn.selected {
+            background-color: #FFFFFF;
+            color: #333333;
+            border-color: #333333;
+        }
+        
+        .topic-section {
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .topic-section.hidden {
+            display: none;
+        }
 
         /* Hide Scrollbar but keep functionality */
         .no-scrollbar::-webkit-scrollbar {
@@ -334,10 +348,21 @@
         </div>
 
         <!-- Featured Publications Section - Full Width -->
-        <div id="publications" class="mt-16 space-y-1 scroll-mt-20">
+        <div id="publications" class="mt-16 space-y-4 scroll-mt-20">
             <h2 class="font-serif text-3xl text-zen-ink">Featured Publications</h2>
             
-            <div class="space-y-4">
+            <!-- Topic Navigation Buttons -->
+            <div class="flex flex-wrap gap-2 pt-2">
+                <button id="topic-mf-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink selected" onclick="switchTopic('mf')">
+                    Multi-Agent Systems & Mean Field Control
+                </button>
+                <button id="topic-robotics-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink" onclick="switchTopic('robotics')">
+                    Robotics & Collective Intelligence
+                </button>
+            </div>
+            
+            <!-- Topic 1: Multi-Agent Systems and Mean Field Control -->
+            <div id="topic-mf" class="topic-section space-y-5">
                 <!-- Publication Card 1 - NeurIPS -->
                 <div class="minimal-panel border border-zen-ink/15 p-6 space-y-4" style="background: white;">
                     <div class="flex flex-col md:flex-row gap-6">
@@ -413,6 +438,18 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Topic 2: Robotics and Collective Intelligence -->
+            <div id="topic-robotics" class="topic-section space-y-5 hidden">
+                <div class="minimal-panel border border-zen-ink/15 p-12 space-y-4" style="background: white;">
+                    <div class="text-center space-y-3">
+                        <p class="text-lg text-zen-ink/60 font-serif italic">Coming soon...</p>
+                        <p class="text-sm text-zen-ink/70">
+                            Visit the <a href="https://proroklab.org/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429] hover-underline">Lab</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -574,7 +611,8 @@
         const connectForm = document.getElementById('connect-form');
         const connectStatusText = document.getElementById('connect-form-status');
 
-        connectForm.addEventListener('submit', async (e) => {
+        if (connectForm && connectStatusText) {
+            connectForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             if (supabaseUrl.includes('YOUR_PROJECT_REF') || supabaseAnonKey.includes('YOUR_SUPABASE_ANON_KEY')) {
@@ -615,7 +653,8 @@
                 console.error(err);
                 setStatus('Something went wrong. Please try again.', 'error', connectStatusText);
             }
-        });
+            });
+        }
 
         function closeModal() {
             const modal = document.getElementById('success-modal');
@@ -627,6 +666,31 @@
             
             connectForm.reset();
             connectStatusText.classList.add('hidden');
+        }
+
+        // --- 4. TOPIC SWITCHING ---
+        function switchTopic(topic) {
+            // Hide all topic sections
+            document.querySelectorAll('.topic-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove selected class from all buttons
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Show selected topic section
+            const selectedSection = document.getElementById(`topic-${topic}`);
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+            }
+            
+            // Add selected class to clicked button
+            const selectedBtn = document.getElementById(`topic-${topic}-btn`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('selected');
+            }
         }
     </script>
 </body>
