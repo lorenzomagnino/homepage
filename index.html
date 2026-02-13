@@ -215,7 +215,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
             
             <!-- LEFT COLUMN: Intro -->
-            <div class="lg:col-span-5 flex flex-col justify-center space-y-10">
+            <div class="lg:col-span-5 flex flex-col space-y-10 min-h-0 lg:h-full">
                 
                 <!-- Header -->
                 <div class="space-y-6">
@@ -269,8 +269,8 @@
                 </div>
 
                 <!-- Contact Links -->
-                <div class="pt-1 flex flex-col space-y-1">
-                    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-6">
+                <div class="pt-1 flex flex-col flex-1 min-h-0">
+                    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-10 flex-shrink-0">
                         <div class="flex flex-col space-y-1 flex-1">
                     <a class="flex items-center space-x-3 group w-fit">
                         <div class="w-8 h-8 rounded-full border border-zen-ink/20 flex items-center justify-center group-hover:bg-zen-ink group-hover:text-zen-cream transition-colors duration-300">
@@ -307,6 +307,8 @@
                             </div>
                 </div>
                     </div>
+                    <div class="flex-1 min-h-[3rem]"></div>
+                    <p class="text-sm text-zen-ink/70 font-light pt-4 flex-shrink-0"><strong>Collaborated with:</strong> University of Cambridge, NYU, UCLA, Earth Science Projects, KTH Royal Institute of Technology, Georgia Institute of Technology.</p>
                 </div>
             </div>
 
@@ -328,37 +330,35 @@
                     <!-- News Section -->
                     <div id="news" class="pt-1 space-y-1 scroll-mt-20">
                         <h3 class="font-serif text-lg text-zen-ink opacity-90">News</h3>
-                        <div class="p-w">
-                            <ul class="space-y-2 list-disc list-inside">
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Jan 2026:</span> Starting as TA for <strong>Robot Mobile Systems</strong>, course taught by <strong>Amanda Prorok</strong>, Cambridge University
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Jan 2026:</span> <strong>ProbAI Winter School.</strong> Diffusion Models and Optimal Transport
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Dec 2025:</span> Poster presentation at <strong>NeurIPS 2025</strong> in San Diego
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Nov 2025:</span> Talk at <strong>Symposium "Future of Intelligent Robotics"</strong> in Cambridge
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Oct 2025:</span> Starting as a Research Assistant at the <strong>University of Cambridge</strong>, ProrokLab
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Jul 2025:</span> Poster presentation at <strong>ICML 2025</strong> in Vancouver
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Mar 2025:</span> Intern at <strong>InstaDeep</strong> (MARL and GNN for routing and scheduling in a real world challenge)
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Sep 2024:</span> Continue as Research Assistant at <strong>NYU Shanghai</strong> w. Mathieu Lauriere
-                                </li>
-                                <li class="text-sm text-zen-ink font-serif leading-relaxed">
-                                    <span class="font-bold">Mar 2024:</span> Head to <strong>NYU Shanghai</strong> as a visiting student
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="space-y-2 list-disc list-inside">
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Jan 2026:</span> Starting as TA for <strong>Robot Mobile Systems</strong>, course taught by <strong>Amanda Prorok</strong>, Cambridge University
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Jan 2026:</span> <strong>ProbAI Winter School.</strong> Diffusion Models and Optimal Transport
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Dec 2025:</span> Poster presentation at <strong>NeurIPS 2025</strong> in San Diego
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Nov 2025:</span> Talk at <strong>Symposium "Future of Intelligent Robotics"</strong> in Cambridge
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Oct 2025:</span> Starting as a Research Assistant at the <strong>University of Cambridge</strong>, ProrokLab
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Jul 2025:</span> Poster presentation at <strong>ICML 2025</strong> in Vancouver
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Mar 2025:</span> Intern at <strong>InstaDeep</strong> (MARL and GNN for routing and scheduling in a real world challenge)
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Sep 2024:</span> Continue as Research Assistant at <strong>NYU Shanghai</strong> w. Mathieu Lauriere
+                            </li>
+                            <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                                <span class="font-bold">Mar 2024:</span> Head to <strong>NYU Shanghai</strong> as a visiting student
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
@@ -366,7 +366,7 @@
         </div>
 
         <!-- Featured Publications Section - Full Width -->
-        <div id="publications" class="mt-16 space-y-4 scroll-mt-20">
+        <div id="publications" class="mt-24 space-y-4 scroll-mt-20">
             <h2 class="font-serif text-3xl text-zen-ink">Featured Publications</h2>
             
             <!-- Topic Navigation Buttons -->
@@ -506,6 +506,44 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Conferences / Talks Section (on background) -->
+        <div id="conferences" class="mt-16 space-y-4 scroll-mt-20">
+            <h2 class="font-serif text-3xl text-zen-ink">Talks</h2>
+            <ul class="space-y-3 list-none w-full">
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>Prob_AI Winter School:</strong> Mathematical Foundations of Probabilistic AI</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">Warwick University, Jan 2026</span>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>NeurIPS 25:</strong> poster presentation</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">San Diego, Dec 2025</span>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>Cambridge CST Symposium:</strong> Foundation models in robotics</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">Madingley Hall, Cambridge UK, Nov 2025</span>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>Insta Deep AI week - Workshop:</strong> Graph Neural Network for Multi-Agent Routing Problem</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">Berlin, Jul 2025</span>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>ICML 25:</strong> poster presentation</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">Vancouver, Jul 2025</span>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-sm text-zen-ink font-serif leading-relaxed">
+                    <span><strong>Seminar:</strong> “Latest advances in Dynamic Programming in Wasserstein spaces” with Professor M. Fischer</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink/80">Padova, Aug. 2023</span>
+                </li>
+                <li class="text-sm text-zen-ink font-serif leading-relaxed">
+                    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                        <span><strong>Research internship</strong> with Professor M. Formentin</span>
+                        <span class="sm:flex-shrink-0 text-zen-ink/80">Padova, Apr. 2022 – Jul 2022</span>
+                    </div>
+                    <p class="mt-1.5 text-zen-ink/85 italic">High-dimensional Probability for Statistical Learning (using Dudley's inequality and covering numbers to derive an upper bound for the excess risk in machine learning theory)</p>
+                </li>
+            </ul>
         </div>
 
         <!-- Projects Section -->
