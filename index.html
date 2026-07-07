@@ -59,19 +59,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* The Canvas Background */
-        #neural-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* Subtle fade at the bottom */
-            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-        }
-
         /* Minimalist Cards - Less blur, more stroke */
         .minimal-panel {
             background: rgba(250, 249, 245, 0.6); /* Matching cream with slight transparency */
@@ -205,9 +192,6 @@
     </script>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-6 md:p-12">
-
-    <!-- Interactive Background -->
-    <canvas id="neural-canvas"></canvas>
 
     <!-- Main Container -->
     <main class="w-full max-w-6xl relative z-10 fade-in-up" style="animation-delay: 0.2s;">
@@ -733,108 +717,6 @@
     </div>
 
     <script>
-        // --- 1. MINIMALIST WIREFRAME ANIMATION ---
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        
-        // Config for the "Way of Code" aesthetic
-        const particleCount = 45; 
-        const connectionDistance = 200; 
-        const mouseDistance = 250; 
-        
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        const mouse = { x: null, y: null };
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3; // Very slow, contemplative movement
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.size = Math.random() * 1.5 + 0.5; // Tiny dots
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                if (mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < mouseDistance) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouseDistance - distance) / mouseDistance;
-                        const direction = 0.015; 
-                        this.vx += forceDirectionX * force * direction;
-                        this.vy += forceDirectionY * force * direction;
-                    }
-                }
-            }
-
-            draw() {
-                // No fill, just subtle dots
-                ctx.fillStyle = 'rgba(51, 51, 51, 0.4)'; // #333333
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx*dx + dy*dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        const opacity = 1 - (distance / connectionDistance);
-                        // Very thin, dark grey lines for wireframe look
-                        ctx.strokeStyle = `rgba(51, 51, 51, ${opacity * 0.12})`; 
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-
         // --- 2. SUPABASE CLIENT ---
         const supabaseUrl = 'https://xtxkpygwzeggzvmlheaj.supabase.co'; // TODO: replace with your Supabase project URL
         const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0eGtweWd3emVnZ3p2bWxoZWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQxNTEwNDgsImV4cCI6MjA3OTcyNzA0OH0.oV_I2L014w89_4uYK_aDsEcYtGhcyTbbxn1UwC1u01Q'; // TODO: replace with your Supabase anon key
