@@ -39,17 +39,18 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.47.4/dist/umd/supabase.min.js" integrity="sha384-KChbanVeCZAx9dKip+0jOtWzru21h6h5Ex1quKnZTIDqmBISE/oxhF9Bfvv8B9mN" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'zen-cream': '#faf9f5',
+                        'zen-cream': '#faf7ef',
                         'zen-ink': '#333333',
                         'zen-accent': '#535146', // subtle earthy tone
                     },
+                    fontWeight: { bold: '600' },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
@@ -64,15 +65,26 @@
         }
         
         body {
-            background-color: #faf9f5;
+            background-color: #faf7ef;
             color: #333333;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
+        body strong, body b {
+            font-weight: 600;
+        }
+
+        body a[href]:not(.nav-button) {
+            color: #722f37;
+        }
+        body a[href]:not(.nav-button):hover {
+            color: #5a2429;
+        }
+
         /* Minimalist Cards - Less blur, more stroke */
         .minimal-panel {
-            background: rgba(250, 249, 245, 0.6); /* Matching cream with slight transparency */
+            background: rgba(250, 247, 239, 0.6); /* Matching cream with slight transparency */
             border: 1px solid rgba(51, 51, 51, 0.1);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -216,27 +228,45 @@
                 <div class="space-y-6">
                     <div class="flex items-center space-x-3">
                         <div class="h-px w-8 bg-zen-ink opacity-30"></div>
-                        <span class="text-xs font-mono uppercase tracking-widest text-zen-ink opacity-60">Research. Lorenzo</span>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zen-ink">Research. Lorenzo</span>
                     </div>
                     
                     <h1 class="font-serif text-5xl md:text-6xl text-zen-ink leading-[1.1]">
                         Lorenzo Magnino
                     </h1>
+                <!-- Navigation Buttons -->
+                <nav aria-label="Main navigation" class="flex flex-wrap gap-2">
+                    <a href="#publications" class="nav-button px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                        Publications
+                    </a>
+                    <a href="repositories.html" class="nav-button px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                        Repositories
+                    </a>
+                    <a href="experiences.html" class="nav-button px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                        Experiences
+                    </a>
+                    <a href="#projects" class="nav-button px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                        Projects
+                    </a>
+                    <a href="music.html" class="nav-button px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
+                        Music
+                    </a>
+                </nav>
                     
                 </div>
 
                 <!-- Bio -->
-                <div class="space-y-6 text-zen-ink max-w-md font-light text-base leading-relaxed">
+                <div class="space-y-6 text-black max-w-md font-light text-base leading-relaxed">
                     <p>
-                        I'm <strong>Lorenzo Magnino,</strong> a researcher at <strong>University of Cambridge</strong>, supervised by <a href="https://proroklab.org/team/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">Amanda Prorok</a>.
+                        I'm <strong>Lorenzo Magnino,</strong> a researcher at <strong>University of Cambridge</strong>, supervised by <a href="https://proroklab.org/team/" target="_blank" class="font-medium text-zen-ink hover:text-zen-ink">Amanda Prorok</a>.
                     </p>
                     
                     <p>
                         My work now explores the intersection of <a class="font-medium" target="_blank">Multi-Agent Robotics</a> and <a class="font-medium" target="_blank">Collective Intelligence</a>.
 
-                        During my time at <a href="https://dail.shanghai.nyu.edu/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">NYUShanghai</a> I worked on Mean Field Games and Reinforcement Learning supervised by <a href="https://mlauriere.github.io/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">Mathieu Lauriere</a>.
+                        During my time at <a href="https://dail.shanghai.nyu.edu/" target="_blank" class="font-medium text-zen-ink hover:text-zen-ink">NYUShanghai</a> I worked on Mean Field Games and Reinforcement Learning supervised by <a href="https://mlauriere.github.io/" target="_blank" class="font-medium text-zen-ink hover:text-zen-ink">Mathieu Lauriere</a>.
 
-                        I also interned at <a href="https://www.instadeep.com/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429]">InstaDeep</a>, working on GNNs for Multi-Agent Reinforcement Learning.
+                        I also interned at <a href="https://www.instadeep.com/" target="_blank" class="font-medium text-zen-ink hover:text-zen-ink">InstaDeep</a>, working on GNNs for Multi-Agent Reinforcement Learning.
                     </p>
                     
                     <p>
@@ -244,7 +274,7 @@
                     </p>
 
                     <p>
-                        <strong>Research:</strong> World Models · Robot Learning · Multi-Agent Systems
+                        <strong>Research direction:</strong> Enabling physical agents to safely and continuously adapt to new situations in the world.
                     </p>
 
                     <p class="text-sm italic text-zen-ink">
@@ -284,38 +314,14 @@
                                 <span class="hover-underline font-mono text-sm">Google Scholar</span>
                             </a>
                         </div>
-                        <div class="mt-6 lg:mt-0 lg:w-40 xl:w-48 flex-shrink-0">
-                            <div class="relative overflow-hidden rounded-2xl border border-zen-ink/15 shadow-[0_14px_28px_rgba(51,51,51,0.14)] bg-white/70 backdrop-blur">
-                                <img src="IMG_7115.jpg" alt="Swarm trajectory visualization" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/40 via-transparent to-transparent pointer-events-none"></div>
-                            </div>
-                </div>
                     </div>
                     <div class="flex-1 min-h-[3rem]"></div>
-                    <p class="text-sm text-zen-ink/70 font-light pt-4 flex-shrink-0"><strong>Collaborated with:</strong> University of Cambridge, NYU, UCLA, Earth Science Projects, KTH Royal Institute of Technology, Georgia Institute of Technology.</p>
+                    <p class="text-sm text-zen-ink font-light pt-4 flex-shrink-0"><strong>Collaborated with:</strong> University of Cambridge, NYU, UCLA, Earth Science Projects, KTH Royal Institute of Technology, Georgia Institute of Technology, TU Berlin.</p>
                 </div>
             </div>
 
             <!-- RIGHT COLUMN: Photos -->
             <div class="lg:col-span-7">
-                <!-- Navigation Buttons -->
-                <div class="flex flex-wrap gap-2 mb-8 lg:justify-end">
-                    <a href="#publications" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border-2 border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
-                        Publications
-                    </a>
-                    <a href="repositories.html" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border-2 border-zen-ink/40 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
-                        Repositories
-                    </a>
-                    <a href="experiences.html" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
-                        Experiences
-                    </a>
-                    <a href="#projects" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
-                        Projects
-                    </a>
-                    <a href="music.html" class="px-3 py-1 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-md hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink">
-                        Music
-                    </a>
-                </div>
                 <div class="minimal-panel p-8 md:p-12 flex flex-col gap-10 relative overflow-hidden">
                     
                     <!-- Subtle pattern decoration in corner -->
@@ -324,14 +330,14 @@
                     <div class="space-y-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <img src="main_profile_image.JPG" alt="Collaborative session" class="w-full h-64 object-cover rounded-xl border border-zen-ink/10 shadow-sm">
-                            <img src="sympo_image.jpg" alt="Brainstorming in Cambridge" class="w-full h-64 object-cover rounded-xl border border-zen-ink/10 shadow-sm">
+                            <img src="sympo_image-web.jpg" width="1200" height="800" decoding="async" alt="Brainstorming in Cambridge" class="w-full h-64 object-cover rounded-xl border border-zen-ink/10 shadow-sm">
                         </div>
-                        <p class="text-sm text-zen-ink/70">Snapshots from recent Symposium on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7396997417511931904/" target="_blank" class="underline font-medium hover:text-zen-ink"><strong>"Future of Intelligent Robotics"</strong></a> in Cambridge.</p>
+                        <p class="text-sm text-zen-ink">Snapshots from recent Symposium on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7396997417511931904/" target="_blank" class="underline font-medium hover:text-zen-ink"><strong>"Future of Intelligent Robotics"</strong></a> in Cambridge.</p>
                     </div>
 
                     <!-- News Section -->
                     <div id="news" class="pt-1 space-y-1 scroll-mt-20">
-                        <h3 class="font-serif text-lg text-zen-ink opacity-90">News</h3>
+                        <h3 class="font-serif text-lg text-zen-ink">News</h3>
                         <ul class="space-y-2 list-disc list-inside">
                             <li class="text-sm text-zen-ink font-serif leading-relaxed">
                                 <span class="font-bold">Jan 2026:</span> Starting as TA for <strong>Robot Mobile Systems</strong>, course taught by <strong>Amanda Prorok</strong>, Cambridge University
@@ -373,23 +379,96 @@
             
             <!-- Topic Navigation Buttons -->
             <div class="flex flex-wrap gap-2 pt-2">
-                <button id="topic-mf-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink" onclick="switchTopic('mf')">
-                    Multi-Agent Systems & Mean Field Control
+                <button id="topic-all-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink selected" aria-pressed="true" onclick="switchTopic('all')">
+                    All
                 </button>
-                <button id="topic-robotics-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/20 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink selected" onclick="switchTopic('robotics')">
+                <button id="topic-robotics-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink" aria-pressed="false" onclick="switchTopic('robotics')">
                     Robotics & Collective Intelligence
+                </button>
+                <button id="topic-mf-btn" class="topic-btn px-4 py-2 text-xs font-mono uppercase tracking-wider border border-zen-ink/40 rounded-full hover:bg-zen-ink hover:text-zen-cream transition-colors duration-300 text-zen-ink" aria-pressed="false" onclick="switchTopic('mf')">
+                    Multi-Agent Systems & Mean Field Control
                 </button>
             </div>
             
-            <!-- Topic 1: Multi-Agent Systems and Mean Field Control -->
-            <div id="topic-mf" class="topic-section space-y-5 hidden">
-                <!-- Publication Card 1 - Bench-MFG -->
-                <div class="p-6 space-y-4 h-[200px] md:h-[180px]">
+            <div class="space-y-5">
+                <div class="topic-section p-6 space-y-4" data-topic="robotics">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-shrink-0 w-full md:w-48 h-32">
+                            <div class="relative overflow-hidden rounded-lg border border-zen-ink/10 shadow-[0_14px_28px_rgba(51,51,51,0.14)] h-full">
+                                <img src="robot_metareasoning_cover.png" alt="A robot path with adaptive planning intervals around obstacles" loading="lazy" width="1536" height="1024" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <div>
+                                <h3 class="font-serif text-xl text-zen-ink mb-2 leading-tight">
+                                    Learning Robot Metareasoning: Adaptive Computation Budgets for Real-Time Control
+                                </h3>
+                                <p class="text-sm text-zen-ink font-light leading-relaxed">
+                                    <strong class="text-black">Lorenzo Magnino</strong>, Antonio Marino, Michael Amir, Daigo Shishika, Amanda Prorok
+                                </p>
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-2">
+                                    Preprint · 2026
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <a href="https://arxiv.org/pdf/2610.23662" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
+                                    <strong>Paper</strong>
+                                    <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
+                                </a>
+                                <a href="https://lorenzomagnino.github.io/learning-robot-metareasoning-review/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
+                                    <strong>Website</strong>
+                                    <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
+                                </a>
+                            </div>
+                            <details class="text-sm text-zen-ink">
+                                <summary class="cursor-pointer w-fit text-xs font-mono font-bold text-zen-ink uppercase tracking-widest hover:text-zen-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Main Discovery</summary>
+                                <p class="mt-3 font-light leading-relaxed">Robots can learn how long to plan before acting again. A state-dependent policy chooses both the action commitment and computation budget, balancing deeper planning with faster feedback as the task demands change.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-section p-6 space-y-4" data-topic="robotics">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-shrink-0 w-full md:w-48 h-32">
+                            <div class="relative overflow-hidden rounded-lg border border-zen-ink/10 shadow-[0_14px_28px_rgba(51,51,51,0.14)] h-full">
+                                <img src="gambit_cover.png" alt="Coordinated robot trajectories weaving around obstacles" loading="lazy" width="1536" height="1024" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <div>
+                                <h3 class="font-serif text-xl text-zen-ink mb-2 leading-tight">
+                                    GAMBIT: Learning to Plan Continuous Multi-Robot Trajectories
+                                </h3>
+                                <p class="text-sm text-zen-ink font-light leading-relaxed">
+                                    Rishabh Jain, Akmaral Moldagalieva, <strong class="text-black">Lorenzo Magnino</strong>, Michael Amir, Keisuke Okumura, Ajay Shankar, Wolfgang Hönig, Amanda Prorok
+                                </p>
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-2">
+                                    Preprint · 2026
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <a href="https://arxiv.org/pdf/2610.06290" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
+                                    <strong>Paper</strong>
+                                    <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
+                                </a>
+                            </div>
+                            <details class="text-sm text-zen-ink">
+                                <summary class="cursor-pointer w-fit text-xs font-mono font-bold text-zen-ink uppercase tracking-widest hover:text-zen-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Main Discovery</summary>
+                                <p class="mt-3 font-light leading-relaxed">Robots learn coordinated choices over motion primitives, including when to give way for the benefit of the team. Imitation learning followed by reinforcement learning produces scalable coordination, while backup trajectories safeguard collision-free execution.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-section p-6 space-y-4" data-topic="mf">
                     <div class="flex flex-col md:flex-row gap-6 h-full">
                         <!-- Paper Image -->
-                        <div class="flex-shrink-0 w-full md:w-48 h-30">
+                        <div class="flex-shrink-0 w-full md:w-48 h-32">
                             <div class="relative overflow-hidden rounded-lg border border-zen-ink/10 shadow-[0_14px_28px_rgba(51,51,51,0.14)] h-full">
-                                <img src="bench_mfg_cover.png" alt="Bench-MFG" class="w-full h-full min-h-[7.5rem] object-cover">
+                                <img src="bench_mfg_cover-v2.png" alt="Bench-MFG" loading="lazy" width="1536" height="1024" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
                             </div>
                         </div>
@@ -400,35 +479,38 @@
                                 <h3 class="font-serif text-xl text-zen-ink mb-2 leading-tight">
                                     Bench-MFG: A Benchmark Suite for Learning in Stationary Mean Field Games
                                 </h3>
-                                <p class="text-sm text-zen-ink/70 font-light leading-relaxed">
-                                    <strong>Lorenzo Magnino</strong>, Jiacheng Shen, Matthieu Geist, Olivier Pietquin, Mathieu Laurière
+                                <p class="text-sm text-zen-ink font-light leading-relaxed">
+                                    <strong class="text-black">Lorenzo Magnino</strong>, Jiacheng Shen, Matthieu Geist, Olivier Pietquin, Mathieu Laurière
                                 </p>
-                                <p class="text-xs text-zen-ink/60 font-mono mt-2">
-                                    (submitted, pre-print soon)
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-2">
+                                    <strong>NeurIPS 2026</strong>
                                 </p>
                             </div>
                             
                             <div class="flex flex-wrap gap-3 pt-2">
-                                <a href="https://arxiv.org/pdf/2602.12517" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://arxiv.org/pdf/2602.12517" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Paper</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
-                                <a href="https://github.com/lorenzomagnino/Bench-MFG" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://github.com/lorenzomagnino/Bench-MFG" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Code</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
                             </div>
+                            <details class="text-sm text-zen-ink">
+                                <summary class="cursor-pointer w-fit text-xs font-mono font-bold text-zen-ink uppercase tracking-widest hover:text-zen-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Main Discovery</summary>
+                                <p class="mt-3 font-light leading-relaxed">A shared benchmark makes learning algorithms for stationary mean field games easier to compare. Structured problem classes and randomly generated games reveal how methods behave across different forms of interaction, rather than on a few hand-picked examples.</p>
+                            </details>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Publication Card 2 - NeurIPS -->
-                <div class="p-6 space-y-4 h-[200px] md:h-[180px]">
+
+                <div class="topic-section p-6 space-y-4" data-topic="mf">
                     <div class="flex flex-col md:flex-row gap-6 h-full">
                         <!-- Paper Image -->
-                        <div class="flex-shrink-0 w-full md:w-48 h-30">
+                        <div class="flex-shrink-0 w-full md:w-48 h-32">
                             <div class="relative overflow-hidden rounded-lg border border-zen-ink/10 shadow-[0_14px_28px_rgba(51,51,51,0.14)] h-full">
-                                <img src="neurips25_cover.png" alt="Solving Continuous Mean Field Games" class="w-full h-full min-h-[7.5rem] object-cover">
+                                <img src="neurips25_cover-v2.png" alt="Solving Continuous Mean Field Games" loading="lazy" width="1536" height="1024" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
                             </div>
                         </div>
@@ -439,84 +521,79 @@
                                 <h3 class="font-serif text-xl text-zen-ink mb-2 leading-tight">
                                     Solving Continuous Mean Field Games: Deep Reinforcement Learning for Non-Stationary Dynamics
                                 </h3>
-                                <p class="text-sm text-zen-ink/70 font-light leading-relaxed">
-                                    <strong>Lorenzo Magnino</strong>, Kai Shao, Zida Wu, Jiacheng Shen, Mathieu Laurière
+                                <p class="text-sm text-zen-ink font-light leading-relaxed">
+                                    <strong class="text-black">Lorenzo Magnino</strong>, Kai Shao, Zida Wu, Jiacheng Shen, Mathieu Laurière
                                 </p>
-                                <p class="text-xs text-zen-ink/60 font-mono uppercase tracking-widest mt-2">
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-2">
                                     <strong>NeurIPS 2025</strong>
                                 </p>
                             </div>
                             
                             <div class="flex flex-wrap gap-3 pt-2">
-                                <a href="https://arxiv.org/pdf/2510.22158" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://arxiv.org/pdf/2510.22158" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Paper</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
-                                <a href="PosterNeurips2025.pdf" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="PosterNeurips2025.pdf" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     Poster
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                                 </a>
-                                <a href="https://github.com/lorenzomagnino/DiffusionEquilibrium" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://github.com/lorenzomagnino/DiffusionEquilibrium" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Code</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
                             </div>
+                            <details class="text-sm text-zen-ink">
+                                <summary class="cursor-pointer w-fit text-xs font-mono font-bold text-zen-ink uppercase tracking-widest hover:text-zen-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Main Discovery</summary>
+                                <p class="mt-3 font-light leading-relaxed">Combining fictitious play, deep reinforcement learning, and conditional normalizing flows makes it possible to learn equilibria in continuous mean field games while representing how the population distribution changes over time.</p>
+                            </details>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Publication Card 3 - ICML -->
-                <div class="p-6 space-y-4 h-[200px] md:h-[180px]">
+
+                <div class="topic-section p-6 space-y-4" data-topic="mf">
                     <div class="flex flex-col md:flex-row gap-6 h-full">
                         <!-- Paper Image -->
-                        <div class="flex-shrink-0 w-full md:w-48 h-30">
+                        <div class="flex-shrink-0 w-full md:w-48 h-32">
                             <div class="relative overflow-hidden rounded-lg border border-zen-ink/10 shadow-[0_14px_28px_rgba(51,51,51,0.14)] h-full">
-                                <img src="icml25_cover.png" alt="ICML 2025 Paper" class="w-full h-full min-h-[7.5rem] object-cover">
+                                <img src="icml25_cover-v2.png" alt="ICML 2025 Paper" loading="lazy" width="1536" height="1024" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-zen-cream/20 via-transparent to-transparent pointer-events-none"></div>
                             </div>
                         </div>
-                        
+
                         <!-- Paper Details -->
                         <div class="flex-1 space-y-3">
                             <div>
                                 <h3 class="font-serif text-xl text-zen-ink mb-2 leading-tight">
                                     Learning to Stop: Deep Learning for Mean Field Optimal Stopping
                                 </h3>
-                                <p class="text-sm text-zen-ink/70 font-light leading-relaxed">
-                                    <strong>Lorenzo Magnino</strong>, Yuchen Zhu, Mathieu Laurière
+                                <p class="text-sm text-zen-ink font-light leading-relaxed">
+                                    <strong class="text-black">Lorenzo Magnino</strong>, Yuchen Zhu, Mathieu Laurière
                                 </p>
-                                <p class="text-xs text-zen-ink/60 font-mono uppercase tracking-widest mt-2">
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-2">
                                     <strong>ICML 2025</strong>
                                 </p>
                             </div>
-                            
+
                             <div class="flex flex-wrap gap-3 pt-2">
-                                <a href="https://arxiv.org/pdf/2410.08850" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://arxiv.org/pdf/2410.08850" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Paper</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
-                                <a href="https://icml.cc/virtual/2025/poster/45598" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://icml.cc/virtual/2025/poster/45598" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     Website
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                                 </a>
-                                <a href="https://github.com/yuchen-zhu-zyc/Learning-to-Stop" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://github.com/yuchen-zhu-zyc/Learning-to-Stop" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>Code</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
                             </div>
+                            <details class="text-sm text-zen-ink">
+                                <summary class="cursor-pointer w-fit text-xs font-mono font-bold text-zen-ink uppercase tracking-widest hover:text-zen-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Main Discovery</summary>
+                                <p class="mt-3 font-light leading-relaxed">A large group of agents can learn when to stop by solving a mean-field approximation of their cooperative problem. A dynamic programming principle leads to two neural-network approaches that scale to high-dimensional settings.</p>
+                            </details>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Topic 2: Robotics and Collective Intelligence -->
-            <div id="topic-robotics" class="topic-section space-y-5">
-                <div class="p-12 space-y-4">
-                    <div class="text-center space-y-3">
-                        <p class="text-lg text-zen-ink/60 font-serif italic">Cool things on Robot Learning, Real-Time Adaptation, and Collective Intelligence coming soon</p>
-                        <p class="text-sm text-zen-ink/70">
-                            Visit the <a href="https://www.proroklab.org/" target="_blank" class="font-medium text-[#722F37] hover:text-[#5A2429] hover-underline">Lab</a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -528,34 +605,34 @@
             <ul class="space-y-3 list-none w-full">
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>Prob_AI Winter School:</strong> Mathematical Foundations of Probabilistic AI</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">Warwick University, Jan 2026</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">Warwick University, Jan 2026</span>
                 </li>
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>NeurIPS 25:</strong> poster presentation</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">San Diego, Dec 2025</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">San Diego, Dec 2025</span>
                 </li>
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>Cambridge CST Symposium:</strong> Foundation models in robotics</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">Madingley Hall, Cambridge UK, Nov 2025</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">Madingley Hall, Cambridge UK, Nov 2025</span>
                 </li>
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>Insta Deep AI week - Workshop:</strong> Graph Neural Network for Multi-Agent Routing Problem</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">Berlin, Jul 2025</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">Berlin, Jul 2025</span>
                 </li>
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>ICML 25:</strong> poster presentation</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">Vancouver, Jul 2025</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">Vancouver, Jul 2025</span>
                 </li>
                 <li class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 text-base text-zen-ink font-serif leading-relaxed">
                     <span><strong>Seminar:</strong> “Latest advances in Dynamic Programming in Wasserstein spaces” with Professor M. Fischer</span>
-                    <span class="sm:flex-shrink-0 text-zen-ink/80">Padova, Aug. 2023</span>
+                    <span class="sm:flex-shrink-0 text-zen-ink">Padova, Aug. 2023</span>
                 </li>
                 <li class="text-base text-zen-ink font-serif leading-relaxed">
                     <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                         <span><strong>Research internship</strong> with Professor M. Formentin</span>
-                        <span class="sm:flex-shrink-0 text-zen-ink/80">Padova, Apr. 2022 – Jul 2022</span>
+                        <span class="sm:flex-shrink-0 text-zen-ink">Padova, Apr. 2022 – Jul 2022</span>
                     </div>
-                    <p class="mt-1.5 text-zen-ink/85 italic">High-dimensional Probability for Statistical Learning (using Dudley's inequality and covering numbers to derive an upper bound for the excess risk in machine learning theory)</p>
+                    <p class="mt-1.5 text-zen-ink italic">High-dimensional Probability for Statistical Learning (using Dudley's inequality and covering numbers to derive an upper bound for the excess risk in machine learning theory)</p>
                 </li>
             </ul>
         </div>
@@ -582,20 +659,20 @@
                                 <h3 class="font-serif text-lg text-zen-ink mb-1.5 leading-tight">
                                     RoboML Research Template
                                 </h3>
-                                <p class="text-xs text-zen-ink/70 font-light leading-relaxed">
+                                <p class="text-xs text-zen-ink font-light leading-relaxed">
                                     A lightweight, opinionated template for running machine learning and robotics research projects. It provides a standardized structure for experiments, data handling, logging, and evaluation, with ready-to-use configs and scripts for reproducible workflows.
                                 </p>
-                                <p class="text-xs text-zen-ink/60 font-mono uppercase tracking-widest mt-1.5">
+                                <p class="text-xs text-zen-ink font-mono uppercase tracking-widest mt-1.5">
                                     ML/Robotics Community
                                 </p>
                             </div>
                             
                             <div class="flex flex-wrap gap-2 pt-1">
-                                <a href="https://github.com/lorenzomagnino/roboml-research-template" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink/70 hover:text-zen-ink">
+                                <a href="https://github.com/lorenzomagnino/roboml-research-template" target="_blank" class="inline-flex items-center text-xs font-mono uppercase tracking-widest hover-underline text-zen-ink hover:text-zen-ink">
                                     <strong>GitHub</strong>
                                     <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M7 7h10v10"></path></svg>
                                 </a>
-                                <p class="text-sm text-zen-ink/60 font-serif italic">
+                                <p class="text-sm text-zen-ink font-serif italic">
                                     <strong>★ Star and clone the repo!</strong>
                                 </p>
                             </div>
@@ -610,16 +687,16 @@
             <h2 class="font-serif text-3xl text-zen-ink">...some interesing readings</h2>
             <div class="p-w">
                 <ul class="space-y-2 list-disc list-inside">
-                    <li class="text-base text-zen-ink/85 font-serif italic leading-relaxed">
+                    <li class="text-base text-zen-ink font-serif italic leading-relaxed">
                         <span class="font-medium text-zen-ink">The Creative Act: A Way of being</span> by Rick Rubin
                     </li>
-                    <li class="text-base text-zen-ink/85 font-serif italic leading-relaxed">
+                    <li class="text-base text-zen-ink font-serif italic leading-relaxed">
                         <span class="font-medium text-zen-ink">The art of doing Science and Engineering</span> by R. Hamming
                     </li>
-                    <li class="text-base text-zen-ink/85 font-serif italic leading-relaxed">
+                    <li class="text-base text-zen-ink font-serif italic leading-relaxed">
                         <span class="font-medium text-zen-ink">What the Tortoise Said to Achilles</span> by L. Carroll
                     </li>
-                    <li class="text-base text-zen-ink/85 font-serif italic leading-relaxed">
+                    <li class="text-base text-zen-ink font-serif italic leading-relaxed">
                         <span class="font-medium text-zen-ink">Why Greatness cannot be Planned</span> by K. Stanley and J. Lehman
                     </li>
                 </ul>
@@ -628,11 +705,11 @@
     </main>
 
     <footer class="fixed bottom-6 left-0 w-full text-center pointer-events-none fade-in-up" style="animation-delay: 0.5s;">
-        <p class="text-[10px] font-mono uppercase tracking-widest text-zen-ink/30">Cambrigde, UK • 2025</p>
+        <p class="text-[10px] font-mono uppercase tracking-widest text-zen-ink">Cambrigde, UK • 2025</p>
     </footer>
 
     <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-[#faf9f5]/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-zen-cream/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
         <div class="bg-zen-ink text-zen-cream rounded-2xl p-10 max-w-sm w-full mx-6 shadow-2xl transform scale-95 transition-transform duration-500 border border-zen-ink" id="modal-content">
             <h3 class="font-serif text-2xl italic mb-4">Request Received</h3>
             <p class="font-light text-zen-cream/80 mb-8 leading-relaxed">Thank you. I have received your request and will follow up shortly via email to coordinate details.</p>
@@ -648,13 +725,13 @@
 
         function setStatus(message, tone = 'info', statusElement) {
             statusElement.textContent = message;
-            statusElement.classList.remove('hidden', 'text-emerald-600', 'text-red-500', 'text-zen-ink/60');
+            statusElement.classList.remove('hidden', 'text-emerald-600', 'text-red-500', 'text-zen-ink');
             if (tone === 'success') {
                 statusElement.classList.add('text-emerald-600');
             } else if (tone === 'error') {
                 statusElement.classList.add('text-red-500');
             } else {
-                statusElement.classList.add('text-zen-ink/60');
+                statusElement.classList.add('text-zen-ink');
             }
         }
 
@@ -721,27 +798,14 @@
 
         // --- 4. TOPIC SWITCHING ---
         function switchTopic(topic) {
-            // Hide all topic sections
             document.querySelectorAll('.topic-section').forEach(section => {
-                section.classList.add('hidden');
+                section.classList.toggle('hidden', topic !== 'all' && section.dataset.topic !== topic);
             });
-            
-            // Remove selected class from all buttons
             document.querySelectorAll('.topic-btn').forEach(btn => {
-                btn.classList.remove('selected');
+                const selected = btn.id === `topic-${topic}-btn`;
+                btn.classList.toggle('selected', selected);
+                btn.setAttribute('aria-pressed', String(selected));
             });
-            
-            // Show selected topic section
-            const selectedSection = document.getElementById(`topic-${topic}`);
-            if (selectedSection) {
-                selectedSection.classList.remove('hidden');
-            }
-            
-            // Add selected class to clicked button
-            const selectedBtn = document.getElementById(`topic-${topic}-btn`);
-            if (selectedBtn) {
-                selectedBtn.classList.add('selected');
-            }
         }
     </script>
 </body>
